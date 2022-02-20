@@ -110,11 +110,17 @@ if (loading) {
           </MapContainer>
         </div>
 
-        {auth.currentUser.uid !==listing.userRef &&(
+        {(auth.currentUser!==null && auth.currentUser.uid !==listing.userRef) &&(
           <Link to={`/contact/${listing.userRef}?listingName=${listing.name}`}
           className="primaryButton">
             Contact Landlord</Link>
         )}
+        {auth.currentUser===null && (
+          <Link to='/sign-in' className="registerLink">
+         Sign In/Sign Up to contact the landlord
+          </Link>
+        )
+        }
     </div>
     </main>
   )
